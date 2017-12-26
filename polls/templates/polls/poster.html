@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="../../static/css/css.css">
+    <h1>POSTER APP</h1>
+    <title>poster</title>
+</head>
+<body>
+            <a href="/login/polls/{{ request.user }}">Go back to index page for voting.</a>
+            <br class="all"/>
+            <br class="all"/>
+
+<FORM id="poster" method="post" action="/login/post_submit/">
+        {% csrf_token %}
+                  TITLE:
+                <input type="text" name="title" required value="" id="title" size="50" />
+            <br class="all"/>
+            <br class="all"/>
+            <br class="all"/>
+                MESSAGE:
+            <textarea rows="3" cols="60" name = "message" id= "message" placeholder="Enter Text Here"> </textarea>
+                <br class="all"/>
+
+        <INPUT type="submit" name="submit" value="submit" />
+        </FORM>
+
+{% if error_message %}
+<h4>{{ error_message }}</h4>
+{% endif %}
+{% autoescape off %}
+{% for i in objects %}
+user id  {{ i.id }}      TITLE:
+<br class="all"/>
+{{ i.title }}
+ <br class="all"/>
+message : {{ i.message }}
+ <br class="all"/> <br class="all"/>
+{% endfor %}
+{% endautoescape %}
+</body>
+</html>
+
+

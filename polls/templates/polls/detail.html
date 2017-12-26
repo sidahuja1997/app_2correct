@@ -1,0 +1,23 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../../static/css/css.css">
+    <h1>POLLING APP</h1>          <h5>{{ request.user }} is logged in</h5>
+</head>
+
+<h1>Detail of the {{ question.id }}th question </h1>
+
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br /><br />
+{% endfor %}
+<br />
+<input type="submit" value="Vote" />
+</form>
+<a href="/logout">LOGOUT!</a>
+</html>

@@ -1,0 +1,42 @@
+<HTML>
+<HEADER>
+    <link rel="stylesheet" href="../../static/css/css.css">
+    <TITLE>REGISTER</TITLE>
+    <h1>POLLING APP</h1>
+</HEADER>
+<BODY>
+<style type="text/css">br.all{
+    margin: 10px;}</style>
+        <h1>USER REGISTRATION :-</h1>
+        <br class="all"/>
+        <br class="all"/>
+        {% if error_message %}
+        <h4>Error Message : {{ error_message }}</h4>
+        {% endif %}
+        <br class="all"/>
+        <br class="all"/>
+        <FORM id="register_form" method="post" action="/user_register/">
+        {% csrf_token %}
+                Username:
+                <input type="text" name="username" value="" id="username" size="50" />
+            <p>* User name should only comprise of characters (a-z) or (A-Z) or '_'</p>
+            <p>* User name should not be greater than 30 characters</p>
+                First Name:
+                <input type="text" name="first_name" value="" id="first_name" size="50" />
+            <br class="all"/>
+            <br class="all"/>
+                Last Name:
+                <input type="text" name="last_name" value="" id="last_name" size="50" />
+            <br class="all"/>
+
+            <br class="all"/>
+                Password:
+                <input type="password" name="password" value="" id="password" size="50" />
+            <p>Password should meet the following conditions :-</p><br class="all"/><p>* It should contain at least 1 number</p>
+            <p>It should contain at least a Capital Letter.</p><p>It should contain 1 of the 3 symbols among (!, @, #)</p>
+                <br class="all"/>
+
+        <INPUT type="submit" name="submit" value="submit" />
+        </FORM>
+</BODY>
+</HTML>

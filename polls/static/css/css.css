@@ -1,0 +1,16 @@
+h1{
+    color:green;
+    font-family:inherit;
+    font-style: italic;
+}
+
+body{
+    text-align:center;
+    color: white;
+    background: black;
+    padding: 5px;
+    font-family: cursive;
+    font-size: px;
+    margin-top: 50px;
+
+}

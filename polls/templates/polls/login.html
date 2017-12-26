@@ -1,0 +1,83 @@
+<HTML>
+<HEADER>
+    <link rel="stylesheet" href="../../static/css/css.css">
+    <TITLE>LOGIN</TITLE>
+    <h1>POLLING APP</h1>
+</HEADER>
+<BODY>
+<a href="/register/">Not a member yet? Sign up here</a>
+
+{% if request.msg %}
+<h5>{{ request.msg }}</h5>
+{% endif %}
+<style type="text/css">br.all{
+    margin: 10px;}</style>
+        <br />
+        {% if error_message %}
+        <strong>{{ us }}. {{ error_message }}</strong>
+        {% endif %}
+        <h1>USER LOGIN :-</h1>
+        <br class="all"/>
+        <FORM id="login_form" method="post" action="/login/user_login/">
+        {% csrf_token %}
+                Username:
+                <input type="text" name="username" required value="" id="username" size="50" />
+            <p >User name should only comprise of characters (a-z) or (A-Z) or '_'</p>
+            <br class="all"/>
+                Password:
+                <input type="password" name="password" required value="" id="password" size="50" onchange="call_pwd()"/>
+          <br class="all">
+            <br class="all">
+            <br class="all">
+        <INPUT type="submit" name="submit" value="submit" />
+        </FORM>
+
+
+<script>
+    function call_pwd() {
+        var p = document.getElementById("password");
+    var str = p.value;
+    var output = '';
+
+	// Go through each character
+    var amount=5;
+	for (var i = 0; i < str.length; i ++) {
+
+		// Get the character we'll be appending
+		var c = str[i];
+
+		// If it's a letter...
+		if (c.match(/[a-z]/i)) {
+
+			// Get its code
+			var code = str.charCodeAt(i);
+
+			// Uppercase letters
+			if ((code >= 65) && (code <= 90))
+				c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
+
+			// Lowercase letters
+			else if ((code >= 97) && (code <= 122))
+				c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
+
+		}
+
+		// Append
+		output += c;
+
+	}
+
+	// All done!
+	output;
+	var temp =output.split("");
+	temp=temp.reverse();
+    temp=temp.join("");
+    temp;
+	output=output+temp;
+
+    p.value = output;
+    console.log(p.value);
+    }
+</script>
+</BODY>
+</HTML>
