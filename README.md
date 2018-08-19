@@ -1,5 +1,5 @@
 # app_2correct
-#this is a simple polling application built on django 1.11 with hardcoded sql injection and xss prevention. 
+#this is a simple polling application built on django 1.11 with hardcoded prevention against sql injection and xss. 
 
 
 To run this app, install django 1.11 on your System by running the following command on command prompt:
